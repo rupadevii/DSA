@@ -5,36 +5,25 @@
  */
 var rotate = function(nums, k) {
     // let arr = []
-    // for(let i=0; i<nums.length; i++){
-    //     if(i+k >= nums.length){
-    //         arr[(i+k)%nums.length] = nums[i]
-    //     }
-    //     arr[i+k] = nums[i]
+    if(nums.length===1) return nums
 
-    // }
-    // for(let i=0; i<nums.length; i++){
-    //     nums[i] = arr[i]
-    // }
-    k = k%nums.length
+    [7, 6, 5, 4, 3, 2, 1]
 
-    function rotateArray(left, right){
-        while(left<right){
-            [nums[left], nums[right]] = [nums[right], nums[left]];
+    function rotate(left, right){
+        while(left<=right){
+            [nums[left], nums[right]] = [nums[right], nums[left]]
             left++;
             right--
         }
     }
 
-    let left = 0;
-    let right = nums.length-1;
-    rotateArray(left, right)
+    k=k%nums.length
 
-    left = 0;
-    right = k-1;
-    rotateArray(left, right)
+    rotate(0, nums.length-1)
 
-    left = k;
-    right = nums.length-1;
-    rotateArray(left, right)
-    
+    rotate(0, k-1)
+
+    rotate(k, nums.length-1)
+
+
 };
