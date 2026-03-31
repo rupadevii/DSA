@@ -3,13 +3,23 @@
  * @return {string[]}
  */
 var removeAnagrams = function(words) {
-    let arr = []
-    arr[0] = words[0]
-    for(let i=1; i<words.length; i++){
-        if(words[i].split("").sort().join("") === words[i-1].split("").sort().join("")){
-            continue
+    let res = []
+    let map = new Map()
+    let str = ""
+    for(let i=0; i<words.length; i++){
+        let arr = new Array(26).fill(0)
+    
+        for(let j=0; j<words[i].length; j++){
+            arr[words[i].charCodeAt(j)-97]++
         }
-        arr.push(words[i])
+
+        let str2 = arr.join(",")
+        
+        if(str!==str2){
+            res.push(words[i])
+            str = str2
+        }
     }
-    return arr
+
+    return res
 };
