@@ -3,26 +3,22 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var sortColors = function(nums) {
-    let map = new Map()
-    for(let i of nums){
-        map.set(i, (map.get(i)||0)+1)
-    }
+    let low = 0;
+    let mid = 0;
+    let high = nums.length-1;
 
-    let i=0;
-    while(i<(map.get(0)||0)){
-        nums[i] = 0;
-        i++
+    while(mid<=high){
+        if(nums[mid]===0){
+            [nums[low], nums[mid]] = [nums[mid], nums[low]]
+            low++
+            mid++
+        }
+        else if(nums[mid]===1){
+            mid++
+        }
+        else{
+            [nums[mid], nums[high]] = [nums[high], nums[mid]]
+            high--
+        }
     }
-
-    while(i-(map.get(0)||0)<(map.get(1)||0)){
-        nums[i] = 1;
-        i++
-    }
-
-    while(i<nums.length){
-        nums[i] = 2;
-        i++
-    }
-    
-   
 };
