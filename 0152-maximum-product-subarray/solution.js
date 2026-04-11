@@ -3,15 +3,19 @@
  * @return {number}
  */
 var maxProduct = function(nums) {
-    let currMax = 1;
-    let currMin = 1;
-    let maxProd = Math.max(...nums);
+    let prefix = 1;
+    let suffix =  1;
+    let maxProd = -Infinity
 
-    for(let i of nums){
-        let temp = currMax;
-        currMax = Math.max(currMax*i, currMin*i, i);
-        currMin = Math.min(temp*i, currMin*i, i);
-        maxProd = Math.max(currMax, maxProd)
+    for(let i=0; i<nums.length; i++){
+        if(prefix===0) prefix = 1;
+        if(suffix===0) suffix = 1
+
+        prefix *= nums[i]
+        suffix *= nums[nums.length-i-1]
+
+        maxProd = Math.max(maxProd, Math.max(prefix, suffix))
     }
-    return maxProd;
+
+    return maxProd
 };
