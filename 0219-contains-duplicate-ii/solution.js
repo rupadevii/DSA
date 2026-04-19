@@ -4,15 +4,18 @@
  * @return {boolean}
  */
 var containsNearbyDuplicate = function(nums, k) {
-    
-    let map = new Map();
-    for(let i=0; i<nums.length; i++){
-        if(map.has(nums[i]) && Math.abs(map.get(nums[i])-i)<=k){
-            return true;
+    let set = new Set()
+    let left = 0;
+
+    for(let right=0; right<nums.length; right++){
+        if(right-left>k){
+            set.delete(nums[left])
+            left++
         }
-        else{
-            map.set(nums[i], i)
-        }
+
+        if(set.has(nums[right])) return true
+        set.add(nums[right])
     }
-    return false;
-}
+
+    return false
+};
