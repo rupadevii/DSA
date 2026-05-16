@@ -4,15 +4,13 @@
  * @return {number[]}
  */
 var shuffle = function(nums, n) {
-    let first = 0;
-    let second = n;
-    let index = 0
+
     let arr = []
-    while(first<nums.length && second<nums.length){
-        arr[index++] = nums[first]
-        arr[index++] = nums[second]
-        first++;
-        second++;
+
+    for(let i=0; i<n; i++){
+        arr.push(nums[i])
+        arr.push(nums[i+n])
     }
+
     return arr
 };
