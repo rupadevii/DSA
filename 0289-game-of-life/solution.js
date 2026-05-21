@@ -24,36 +24,45 @@ var gameOfLife = function(board) {
 
     function check(row, col){
         let count = 0
-        if(board[row-1]){
-            if(board[row-1][col]===3 || board[row-1][col]===1) count++
-        }
-        if(board[row][col-1]){
-            if(board[row][col-1]===3 || board[row][col-1]===1) count++
-        }
+        const indices = [
+            [0, 1], [1, 0], [1, 1], [0, -1], [-1, 0], [-1, -1], [-1, 1], [1, -1]
+        ]
 
-        if(board[row-1] && board[row-1][col-1]){
-            if(board[row-1][col-1]===3 || board[row-1][col-1]===1) count++
+        for(let [x, y] of indices){
+            if(row+x>=0 && row+x<board.length && col+y>=0 && col+y<board[0].length){
+                if(board[row+x][col+y]===3 || board[row+x][col+y]===1) count++
+            }
         }
+        // if(board[row-1]){
+        //     if(board[row-1][col]===3 || board[row-1][col]===1) count++
+        // }
+        // if(board[row][col-1]){
+        //     if(board[row][col-1]===3 || board[row][col-1]===1) count++
+        // }
 
-        if(board[row][col+1]){
-            if(board[row][col+1]===3 || board[row][col+1]===1) count++
-        }
-        if(board[row+1]){
-            if(board[row+1][col]===3 || board[row+1][col]===1) count++
+        // if(board[row-1] && board[row-1][col-1]){
+        //     if(board[row-1][col-1]===3 || board[row-1][col-1]===1) count++
+        // }
 
-        }
+        // if(board[row][col+1]){
+        //     if(board[row][col+1]===3 || board[row][col+1]===1) count++
+        // }
+        // if(board[row+1]){
+        //     if(board[row+1][col]===3 || board[row+1][col]===1) count++
 
-        if(board[row+1] && board[row+1][col+1]){
-            if(board[row+1][col+1]===3 || board[row+1][col+1]===1) count++
-        }
+        // }
 
-        if(board[row+1] && board[row+1][col-1]){
-            if(board[row+1][col-1]===3 || board[row+1][col-1]===1) count++
-        }
+        // if(board[row+1] && board[row+1][col+1]){
+        //     if(board[row+1][col+1]===3 || board[row+1][col+1]===1) count++
+        // }
 
-        if(board[row-1] && board[row-1][col+1]){
-            if(board[row-1][col+1]===3 || board[row-1][col+1]===1) count++
-        }
+        // if(board[row+1] && board[row+1][col-1]){
+        //     if(board[row+1][col-1]===3 || board[row+1][col-1]===1) count++
+        // }
+
+        // if(board[row-1] && board[row-1][col+1]){
+        //     if(board[row-1][col+1]===3 || board[row-1][col+1]===1) count++
+        // }
 
         return count
     }
