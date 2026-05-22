@@ -3,18 +3,19 @@
  * @return {number}
  */
 var jump = function(nums) {
-    let count = 0;
-    let start = 0;
+    let minJumps = 0
+    let start = 0
     let end = 0
     while(end<nums.length-1){
-        let maxReach = 0;
-        for(i=start; i<=end; i++){
-            maxReach = Math.max(maxReach, i+nums[i])
+        let jumps = 0
+        for(let i=start; i<=end; i++){
+            jumps = Math.max(jumps, i+nums[i])
         }
-        start = end+1;
-        end = maxReach
-        count++
+        start = end+1
+        end = jumps
+        minJumps++
     }
-    return count
-    
+
+    return minJumps
+
 };
