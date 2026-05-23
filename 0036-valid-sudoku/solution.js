@@ -28,19 +28,6 @@ var isValidSudoku = function(board) {
                 }
 
             }
-
-            //  let set2 = new Set()
-            // for(let j=3; j<=5; j++){
-            //     if(board[i][j]!=="." && set2.has(board[i][j])) return false
-            //     else if(board[i][j]!==".") set2.add(board[i][j])
-            // }
-
-            // let set3 = new Set()
-            // for(let j=6; j<=8; j++){
-            //     if(board[i][j]!=="." && set3.has(board[i][j])) return false
-            //     else if(board[i][j]!==".") set3.add(board[i][j])
-            // }
-
         }
     }
 
