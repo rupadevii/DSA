@@ -4,22 +4,22 @@
  * @return {string}
  */
 var convert = function(s, numRows) {
-    if(numRows===1) return s
+    if(numRows === 1) return s
     let arr = new Array(numRows).fill().map(item => [])
 
-    let whatever = 0
-    let index = 0;
+    let dir = 0
+    let index = 0
+
     for(let i=0; i<s.length; i++){
         arr[index].push(s[i])
-        if(index === 0){
-            whatever = 1
+        if(index===0){
+            dir = 1
+        }
+        else if(index===numRows-1){
+            dir = -1
         }
 
-        if(index===numRows-1){
-           whatever = -1
-        }
-
-        index += whatever
+        index += dir
     }
 
     for(let i=0; i<arr.length; i++){
