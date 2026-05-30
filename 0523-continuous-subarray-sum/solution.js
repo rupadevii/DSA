@@ -4,24 +4,20 @@
  * @return {boolean}
  */
 var checkSubarraySum = function(nums, k) {
-    let sum = 0;
     let map = new Map()
     map.set(0, -1)
+    let sum = 0
 
     for(let i=0; i<nums.length; i++){
         sum += nums[i]
-        let rem = sum%k;
+        let rem = sum%k
 
-        // if(map.has(rem) && i-map.get(rem)>=1){
-        //     return true
         if(map.has(rem)){
-            if(i-map.get(rem)>1){
+            if(i-map.get(rem)>1){ 
                 return true
             }
-        }
-        else{
+        }else{
             map.set(rem, i)
-
         }
 
     }
