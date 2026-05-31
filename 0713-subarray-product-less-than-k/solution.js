@@ -5,19 +5,20 @@
  */
 var numSubarrayProductLessThanK = function(nums, k) {
     if(k<=1) return 0
-    let count = 0;
-    let left = 0;
-    let product = 1;
-    for(let i=0; i<nums.length; i++){
-        product *= nums[i];
-        
+    let left = 0
+    let count = 0
+
+    let product = 1
+    for(let right = 0; right<nums.length; right++){
+        product *= nums[right]
+
         while(product>=k){
-            product/=nums[left];
+            product/= nums[left]
             left++
         }
 
-        count+= i-left+1;
-        
+        count += right-left+1
     }
-    return count;
+
+    return count
 };
