@@ -4,13 +4,13 @@
  * @return {string}
  */
 var mapWordWeights = function(words, weights) {
-    let map = new Map()
-    let value = 25
+    // let map = new Map()
+    // let value = 25
 
-    for(let i=97; i<123; i++){
-        map.set(value, String.fromCharCode(i))
-        value--
-    }
+    // for(let i=97; i<123; i++){
+    //     map.set(value, String.fromCharCode(i))
+    //     value--
+    // }
     // console.log(map)
 
     let res = []
@@ -25,7 +25,7 @@ var mapWordWeights = function(words, weights) {
             sum += weights[word.charCodeAt(j)-97]
         }
 
-        res.push(map.get(sum%26))
+        res.push(String.fromCharCode('z'.charCodeAt(0)-sum%26))
         
     }
 
