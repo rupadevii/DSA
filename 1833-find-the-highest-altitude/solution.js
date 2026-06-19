@@ -3,7 +3,7 @@
  * @return {number}
  */
 var largestAltitude = function(gain) {
-    const sum = gain.reduce((acc, ele) => acc+ele, 0)
+    // const sum = gain.reduce((acc, ele) => acc+ele, 0)
 
     let gainI = 0;
     let highestAl = 0
