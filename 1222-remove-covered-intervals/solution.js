@@ -4,26 +4,21 @@
  */
 var removeCoveredIntervals = function(intervals) {
     intervals.sort((a, b) => a[0]===b[0] ? b[1]-a[1] : a[0]-b[0])
-
-    //[1, 4], [2, 8], [3, 6]
-
-    let res = []
-
-    res.push(intervals[0])
+    let count = 1
+    let curr0 = intervals[0][0]
+    let curr1 = intervals[0][1]
 
     for(let i=1; i<intervals.length; i++){
         //[[1, 4], [1, 2], [3, 4]]
-            if(intervals[i][0]>=res[res.length-1][0] && intervals[i][1]<=res[res.length-1][1]){
+            if(intervals[i][0]>=curr0 && intervals[i][1]<=curr1){
                 continue
-            // }else if(intervals[i][0]<=res[res.length-1][0] && intervals[i][1]>=res[res.length-1][1]){
-            //     res.pop()
-            // }
             }
-        
         else{
-            res.push(intervals[i])
+            curr0 = intervals[i][0]
+            curr1 = intervals[i][1]
+            count++
         }
     }
 
-    return res.length
+    return count
 };
