@@ -5,26 +5,24 @@
 var groupAnagrams = function(strs) {
     let map = new Map()
 
-    for(let i=0; i<strs.length; i++){
+    for(let i of strs){
+        let word = i
+
         let arr = new Array(26).fill(0)
-        let word = strs[i]
-        for(let i=0; i<word.length; i++){
-            arr[word.charCodeAt(i)-97]++
+
+        for(let j=0; j<word.length; j++){
+            arr[word.charCodeAt(j)-97]++
         }
 
-        let str = arr.join(",")
+        let key = arr.join(",")
 
-        if(map.has(str)){
-            map.set(str, [...map.get(str), word])
-        }
-        else{
-            map.set(str, [word])
-        }
-
+        map.set(key, map.has(key) ? [...map.get(key), word] : [word])
+    
     }
+
     let res = []
 
-    for(let [key, values] of map){
+    for(let[key, values] of map){
         res.push(values)
     }
 
