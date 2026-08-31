@@ -6,18 +6,19 @@
 var maxVowels = function(s, k) {
     let maxVowelsInString = 0;
 
-    let vowels = 'aeiou'
+    let set = new Set(['a', 'e', 'i', 'o', 'u'])
+    // console.log(set)
     let count = 0
     for(let i=0; i<k; i++){
-        if(vowels.includes(s[i])) count++
+        if(set.has(s[i])) count++
     }
 
     maxVowelsInString = count;
 
     // let left = 0;
     for(let i = k; i<s.length; i++){
-        if(vowels.includes(s[i])) count++;
-        if(vowels.includes(s[i-k])) count--
+        if(set.has(s[i])) count++;
+        if(set.has(s[i-k])) count--
         maxVowelsInString = Math.max(maxVowelsInString, count)
     }
 
