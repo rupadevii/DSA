@@ -6,11 +6,8 @@ var removeStars = function(s) {
     let arr = []
 
     for(let i of s){
-        if(i==="*"){
-            arr.pop()
-        }else{
-            arr.push(i)
-        }
+        i==="*" ? arr.pop() : arr.push(i)
     }
+    
     return arr.join("")
 };
