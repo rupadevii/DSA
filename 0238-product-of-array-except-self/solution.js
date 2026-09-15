@@ -16,6 +16,6 @@ var productExceptSelf = function(nums) {
         arr[i] *= right
         right *= nums[i]
     }
-    // console.log(arr)
+    
     return arr
 };
