@@ -3,27 +3,26 @@
  * @return {number}
  */
 var trap = function(height) {
-    let left = new Array(height.length)
+    let left = 0, right = height.length-1
+    let leftMax = height[left], rightMax = height[right], count = 0
 
-    left[0] = height[0]
+    while(left<right){
+        if(leftMax<rightMax){
+            left++
+            if(height[left]>=leftMax){
+                leftMax = height[left]
+            }else{
+                count += leftMax-height[left]
+            }
+        }else{
+            right--
+            if(height[right]>=rightMax){
+                rightMax = height[right]
+            }else{
+                count += rightMax-height[right]
+            }
+        }
 
-    for(let i=1; i<height.length; i++){
-        left[i] = Math.max(left[i-1], height[i])
     }
-
-    let right = new Array(height.length)
-
-    right[height.length-1] = height[height.length-1]
-
-    for(let i=height.length-2; i>=0; i--){
-        right[i] = Math.max(right[i+1], height[i])
-    }
-
-    let res = 0;
-
-    for(let i=0; i<height.length; i++){
-        res += Math.min(left[i], right[i]) - height[i]
-    }
-
-    return res
+    return count
 };
