@@ -20,7 +20,7 @@ var minWindow = function(s, t) {
             sMap.set(s[right], (sMap.get(s[right])||0)+1)
         }
 
-        if(tMap.has(s[right]) && sMap.get(s[right])===tMap.get(s[right])){
+        if(tMap.has(s[right]) && sMap.has(s[right]) && sMap.get(s[right])===tMap.get(s[right])){
             curr++
         }
 
