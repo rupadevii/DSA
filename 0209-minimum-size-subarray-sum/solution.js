@@ -4,8 +4,7 @@
  * @return {number}
  */
 var minSubArrayLen = function(target, nums) {
-    let left = 0
-    let sum = 0
+    let left = 0, sum = 0
     let minLen = Infinity
 
     for(let right = 0; right<nums.length; right++){
