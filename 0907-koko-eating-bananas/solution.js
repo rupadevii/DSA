@@ -4,25 +4,23 @@
  * @return {number}
  */
 var minEatingSpeed = function(piles, h) {
-    let low = 1;
+    let low = 1
     let high = Math.max(...piles)
     let res = 0
 
     while(low<=high){
-        let mid = Math.floor((low+high)/2)
-
-        let time = 0
+        let k = Math.floor((low+high)/2)
+        let count = 0
 
         for(let i of piles){
-            time += Math.ceil(i/mid)
+            count += Math.ceil(i/k)
         }
-        // console.log(time)
 
-        if(time<=h){
-            res = mid
-            high = mid-1
+        if(count<=h){
+            res = k
+            high = k-1
         }else{
-            low = mid+1
+            low = k+1
         }
     }
 
