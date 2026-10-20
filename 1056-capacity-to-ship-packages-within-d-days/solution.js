@@ -10,7 +10,6 @@ var shipWithinDays = function(weights, days) {
 
     while(low<=high){
         let mid = Math.floor((low+high)/2)
-        // console.log(mid)
 
         let sum = 0
         let count = 0
